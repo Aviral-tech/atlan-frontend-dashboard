@@ -1,0 +1,9 @@
+.query-button-grid {
+  padding: 2%;
+}
+.query-button {
+  margin: 1% 0% 0% 1%;
+}
+.limit-box {
+  height: 90vh !important;
+}
