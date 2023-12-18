@@ -16,6 +16,8 @@ import { styled } from "@mui/material/styles";
 import customers from "../customers.csv";
 import employees from "../employees.csv";
 import suppliers from "../suppliers.csv";
+import territories from "../territories.csv";
+import northwind from "../northwind.csv";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -48,17 +50,24 @@ const CsvTable = (props) => {
   const [rows, setRows] = useState([]);
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("");
+  const possibilities = [territories, northwind];
 
   useEffect(() => {
     const fetchData = async () => {
       if (props.data) {
         let parseData;
 
-        if (props.data == "Suppliers") {
+        if (props.selectedQuery) {
+          const random = Math.floor(Math.random() * (1 - 0 + 1)) + 0;
+          {
+            console.log(possibilities[random]);
+          }
+          parseData = await fetch(possibilities[random]);
+        } else if (props.data === "Suppliers") {
           parseData = await fetch(suppliers);
-        } else if (props.data == "Employees") {
+        } else if (props.data === "Employees") {
           parseData = await fetch(employees);
-        } else if (props.data == "Customers") {
+        } else if (props.data === "Customers") {
           parseData = await fetch(customers);
         } else {
           parseData = await fetch(suppliers);
@@ -80,7 +89,7 @@ const CsvTable = (props) => {
     };
 
     fetchData();
-  }, [props.data]);
+  }, [props.data, props.selectedQuery]);
 
   const handleRequestSort = (property) => {
     const isAsc = orderBy === property && order === "asc";

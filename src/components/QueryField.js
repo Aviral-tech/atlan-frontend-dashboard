@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, TextField, Button } from "@mui/material";
 import { Code, RestartAlt } from "@mui/icons-material";
 
-const QueryField = () => {
+const QueryField = ({ onExecute, onQueryChange }) => {
+  const [query, setQuery] = useState("");
+
+  const handleExecute = () => {
+    console.log("Execute clicked with query:", query);
+    // Add your logic to execute the query
+
+    // Call the onExecute prop to append the query to oldQueries
+    onExecute(query);
+    onQueryChange(query);
+  };
+
+  const handleReset = () => {
+    setQuery(""); // Reset the query state to an empty string
+  };
+
   return (
     <div>
       <TextField
@@ -11,9 +26,10 @@ const QueryField = () => {
         type="search"
         variant="filled"
         multiline
-        rows={4}
-        maxRows={8}
+        rows={3}
         fullWidth
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
       <Grid className="query-button-grid" justifyContent="flex-end" container>
         <Grid className="query-button" md={4}>
@@ -21,9 +37,7 @@ const QueryField = () => {
             type="submit"
             variant="contained"
             color="primary"
-            onClick={() => {
-              console.log("clicked");
-            }}
+            onClick={handleExecute}
           >
             <Code />
             Execute
@@ -34,9 +48,7 @@ const QueryField = () => {
             type="submit"
             variant="contained"
             color="secondary"
-            onClick={() => {
-              console.log("clicked");
-            }}
+            onClick={handleReset}
           >
             <RestartAlt />
             Reset

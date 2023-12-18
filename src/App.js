@@ -21,10 +21,24 @@ const theme = createTheme({
 
 function App() {
   const [selectedTable, setSelectedTable] = useState("Employees");
+  const [selectedQuery, setSelectedQuery] = useState("");
+  const [oldQueries, setOldQueries] = useState([]);
 
   const handleTableSelect = (selectedTable) => {
     setSelectedTable(selectedTable);
     // Use the selected table as needed
+  };
+
+  const appendToOldQueries = (query) => {
+    setOldQueries((prevQueries) => {
+      const newQueries = [...prevQueries, query];
+      // Keep a maximum length of 5
+      return newQueries.slice(-5);
+    });
+  };
+
+  const handleQueryChange = (query) => {
+    setSelectedQuery(query); // Update selectedQuery when the query text changes
   };
 
   return (
@@ -32,21 +46,35 @@ function App() {
       <div className="App">
         <Grid container spacing={2}>
           <Grid className="container" md={4}>
-            <QueryField />
+            <QueryField
+              onExecute={appendToOldQueries}
+              onQueryChange={handleQueryChange}
+            />
             <Grid className="container-box" container>
               <Grid md={12}>
-                <TableList onTableSelect={handleTableSelect} />
+                <TableList
+                  onTableSelect={handleTableSelect}
+                  onQueryChange={handleQueryChange}
+                  selectedQuery={selectedQuery}
+                />
               </Grid>
             </Grid>
             <Grid className="container-box" container>
               <Grid md={12}>
-                <PastQueries />
+                <PastQueries
+                  selectedQuery={selectedQuery}
+                  data={oldQueries}
+                  appendToOldQueries={appendToOldQueries}
+                  onQueryChange={handleQueryChange}
+                />
               </Grid>
             </Grid>
           </Grid>
           <Grid md={8}>
             <div className="container query-result limit-box">
-              {selectedTable && <CsvTable data={selectedTable} />}
+              {selectedTable && (
+                <CsvTable data={selectedTable} selectedQuery={selectedQuery} />
+              )}
             </div>
           </Grid>
         </Grid>

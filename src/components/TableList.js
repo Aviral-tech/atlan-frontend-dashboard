@@ -27,7 +27,7 @@ const tableData = {
 
 const tableNames = Object.keys(tableData);
 
-const TableList = ({ onTableSelect }) => {
+const TableList = ({ onTableSelect, onQueryChange, selectedQuery }) => {
   const [selectedTable, setSelectedTable] = useState("Employee");
   const selectedTableData = tableData[selectedTable];
 
@@ -35,6 +35,7 @@ const TableList = ({ onTableSelect }) => {
     const selectedTableName = event.target.value;
     setSelectedTable(selectedTableName);
     onTableSelect(selectedTableName);
+    onQueryChange("");
   };
 
   return (
@@ -53,7 +54,7 @@ const TableList = ({ onTableSelect }) => {
             ))}
           </Select>
         </FormControl>
-        {selectedTableData && (
+        {selectedTableData && !selectedQuery && (
           <div style={{ marginTop: "10px" }}>
             <Typography variant="subtitle1" gutterBottom>
               <b> Description:</b>
