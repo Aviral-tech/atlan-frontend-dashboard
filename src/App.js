@@ -1,9 +1,14 @@
 import "./App.css";
-import { Grid, TextField, Button } from "@mui/material";
+import React, { useState } from "react";
+
+import { Grid } from "@mui/material";
 import { blue, purple } from "@mui/material/colors";
 import "./query.css";
-import { Code, RestartAlt } from "@mui/icons-material";
+
 import CsvTable from "./components/CsvTable";
+import QueryField from "./components/QueryField";
+import TableList from "./components/TableList";
+import PastQueries from "./components/PastQueries";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -15,57 +20,33 @@ const theme = createTheme({
 });
 
 function App() {
+  const [selectedTable, setSelectedTable] = useState("Employees");
+
+  const handleTableSelect = (selectedTable) => {
+    setSelectedTable(selectedTable);
+    // Use the selected table as needed
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <Grid container spacing={2}>
           <Grid className="container" md={4}>
-            <TextField
-              id="filled-search"
-              label="Enter SQL Query here"
-              type="search"
-              variant="filled"
-              multiline
-              rows={4}
-              maxRows={8}
-              fullWidth
-            />
-            <Grid
-              className="query-button-grid"
-              justifyContent="flex-end"
-              container
-            >
-              <Grid className="query-button" md={4}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    console.log("clicked");
-                  }}
-                >
-                  <Code />
-                  Execute
-                </Button>
+            <QueryField />
+            <Grid className="container-box" container>
+              <Grid md={12}>
+                <TableList onTableSelect={handleTableSelect} />
               </Grid>
-              <Grid align="right" className="query-button" md={3}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => {
-                    console.log("clicked");
-                  }}
-                >
-                  <RestartAlt />
-                  Reset
-                </Button>
+            </Grid>
+            <Grid className="container-box" container>
+              <Grid md={12}>
+                <PastQueries />
               </Grid>
             </Grid>
           </Grid>
           <Grid md={8}>
             <div className="container query-result limit-box">
-              <CsvTable />
+              {selectedTable && <CsvTable data={selectedTable} />}
             </div>
           </Grid>
         </Grid>

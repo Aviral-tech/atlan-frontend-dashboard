@@ -13,12 +13,18 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import orderCsv from "../customers.csv";
+import customers from "../customers.csv";
+import employees from "../employees.csv";
+import suppliers from "../suppliers.csv";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.main,
+      fontWeight: "bold",
+    },
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -35,22 +41,46 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const CsvTable = () => {
+const CsvTable = (props) => {
+  const { data } = props.data;
+
   const [headers, setHeaders] = useState([]);
   const [rows, setRows] = useState([]);
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("");
 
   useEffect(() => {
-    Papa.parse(orderCsv, {
-      download: true,
-      header: true,
-      complete: (result) => {
-        setHeaders(Object.keys(result.data[0] || {}));
-        setRows(result.data.map((row) => Object.values(row)));
-      },
-    });
-  }, []);
+    const fetchData = async () => {
+      if (props.data) {
+        let parseData;
+
+        if (props.data == "Suppliers") {
+          parseData = await fetch(suppliers);
+        } else if (props.data == "Employees") {
+          parseData = await fetch(employees);
+        } else if (props.data == "Customers") {
+          parseData = await fetch(customers);
+        } else {
+          parseData = await fetch(suppliers);
+        }
+        {
+          console.log(props.data, parseData);
+        }
+        const textContent = await parseData.text();
+        Papa.parse(textContent, {
+          download: false, // Set to false since we're passing text directly
+          header: true,
+          complete: (result) => {
+            setHeaders(Object.keys(result.data[0] || {}));
+            setRows(result.data.map((row) => Object.values(row)));
+            console.log(result);
+          },
+        });
+      }
+    };
+
+    fetchData();
+  }, [props.data]);
 
   const handleRequestSort = (property) => {
     const isAsc = orderBy === property && order === "asc";
