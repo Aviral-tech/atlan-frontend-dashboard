@@ -13,6 +13,20 @@ It also has a table list feature where a can easily view the table along with it
    
 2) Papaparse-PapaParse is a powerful and easy-to-use JavaScript library for parsing CSV (Comma-Separated Values) data. It can handle large CSV files and provides features like automatic type inference, custom delimiters, and asynchronous parsing. PapaParse is often used in web applications to parse CSV data received from files or APIs and convert it into a usable format for further processing or display.
 
+#Page Load Time and measurement metrics
+
+![image](https://github.com/Aviral-tech/atlan-frontend-dashboard-/assets/72295671/ca9c787b-03a8-4a48-b433-a5208a06afeb)
+
+![image](https://github.com/Aviral-tech/atlan-frontend-dashboard-/assets/72295671/dccf3ec7-6591-4cc9-a90c-f3a6e0603eff)
+
+![image](https://github.com/Aviral-tech/atlan-frontend-dashboard-/assets/72295671/4903c58e-8541-4510-bdea-d2ca82681343)
+
+Measured the load time of application through Pagespeed Insights 
+<a href="https://pagespeed.web.dev/analysis/https-quiet-sunflower-77cf49-netlify-app/0s2of1czwd?form_factor=desktop />
+
+
+
+
 
 
 
