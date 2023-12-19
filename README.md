@@ -21,8 +21,8 @@ It also has a table list feature where a can easily view the table along with it
 
 ![image](https://github.com/Aviral-tech/atlan-frontend-dashboard-/assets/72295671/4903c58e-8541-4510-bdea-d2ca82681343)
 
-Measured the load time of application through Pagespeed Insights 
-<a href="https://pagespeed.web.dev/analysis/https-quiet-sunflower-77cf49-netlify-app/0s2of1czwd?form_factor=desktop />
+Measured the load time of application through Pagespeed Insights:
+https://pagespeed.web.dev/analysis/https-quiet-sunflower-77cf49-netlify-app/0s2of1czwd?form_factor=desktop 
 
 
 
