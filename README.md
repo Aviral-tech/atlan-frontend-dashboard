@@ -24,6 +24,10 @@ It also has a table list feature where a can easily view the table along with it
 Measured the load time of application through Pagespeed Insights:
 https://pagespeed.web.dev/analysis/https-quiet-sunflower-77cf49-netlify-app/0s2of1czwd?form_factor=desktop 
 
+#Optimizations 
+1)Code Splitting:
+Implemented code splitting to split JavaScript bundle into smaller chunks. This helps in loading only the necessary code for the current view, reducing the initial load time.
+
 
 
 
