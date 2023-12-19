@@ -12,6 +12,7 @@ import {
   TableSortLabel,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { TableVirtuoso } from "react-virtuoso";
 
 import customers from "../customers.csv";
 import employees from "../employees.csv";
@@ -72,9 +73,7 @@ const CsvTable = (props) => {
         } else {
           parseData = await fetch(suppliers);
         }
-        {
-          console.log(props.data, parseData);
-        }
+
         const textContent = await parseData.text();
         Papa.parse(textContent, {
           download: false, // Set to false since we're passing text directly
@@ -82,7 +81,6 @@ const CsvTable = (props) => {
           complete: (result) => {
             setHeaders(Object.keys(result.data[0] || {}));
             setRows(result.data.map((row) => Object.values(row)));
-            console.log(result);
           },
         });
       }
