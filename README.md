@@ -1,7 +1,7 @@
 # Overview
 
 This project takes some input and based upon that it randomly displays data in a table. It also save the input and maintains a past query table where a user can easily from upto max 5 previous queries and view the result.
-It also has a table list feature where a can easily view the table along with its description and attributes.
+It also has a table list feature where a can easily view the table along with its description and attributes. A user can also sort the rows by clicking upon the column headers individually. 
 
 ## Frameworks and Packages used 
 
@@ -28,8 +28,13 @@ https://pagespeed.web.dev/analysis/https-quiet-sunflower-77cf49-netlify-app/0s2o
 
 1)Code Splitting:
 Implemented code splitting to split JavaScript bundle into smaller chunks. This helps in loading only the necessary code for the current view, reducing the initial load time.
+ 
+**Planned Optimizations**
+1) Integrating react virtualization- 
+This library includes table support to render only those rows which are available or are visible on the display area. Thereby, reducing load time and increasing efficiency.
 
-
+2) Implementing infinite scrolling- 
+Infiintie scrolling goes hand in hand with react virtualization and can be integrated to render large amounts of data as seen in real scenarios. 
 
 
 
