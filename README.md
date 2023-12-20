@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project takes some input and based upon that it randomly displays data in a table. It also save the input and maintains a past query table where a user can easily from upto max 5 previous queries and view the result.
+It also has a table list feature where a can easily view the table along with its description and attributes.
 
-## Available Scripts
+## Frameworks and Packages used 
 
-In the project directory, you can run:
+**Frameworks**
+1) Reactjs- React is a JavaScript library for building user interfaces. Developed and maintained by Facebook, it allows developers to create reusable UI components that can efficiently update and render based on the application's state. React follows a declarative approach, making it easier to understand and debug. It is widely used for building single-page applications (SPAs) and is known for its virtual DOM, which optimizes rendering performance.
 
-### `npm start`
+**Libraries**
+1) Material UI-Material-UI is a popular React UI framework that implements Google's Material Design principles. It provides a set of customizable and well-designed React components for building modern, responsive, and visually appealing user interfaces. Material-UI components are built with flexibility and customization in mind, making it easy for developers to create consistent and beautiful UIs that adhere to Material Design standards.
+   
+2) Papaparse-PapaParse is a powerful and easy-to-use JavaScript library for parsing CSV (Comma-Separated Values) data. It can handle large CSV files and provides features like automatic type inference, custom delimiters, and asynchronous parsing. PapaParse is often used in web applications to parse CSV data received from files or APIs and convert it into a usable format for further processing or display.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Page Load Time and measurement metrics
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![image](https://github.com/Aviral-tech/atlan-frontend-dashboard-/assets/72295671/ca9c787b-03a8-4a48-b433-a5208a06afeb)
 
-### `npm test`
+![image](https://github.com/Aviral-tech/atlan-frontend-dashboard-/assets/72295671/dccf3ec7-6591-4cc9-a90c-f3a6e0603eff)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://github.com/Aviral-tech/atlan-frontend-dashboard-/assets/72295671/4903c58e-8541-4510-bdea-d2ca82681343)
 
-### `npm run build`
+Measured the load time of application through Pagespeed Insights:
+https://pagespeed.web.dev/analysis/https-quiet-sunflower-77cf49-netlify-app/0s2of1czwd?form_factor=desktop 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Optimizations
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1)Code Splitting:
+Implemented code splitting to split JavaScript bundle into smaller chunks. This helps in loading only the necessary code for the current view, reducing the initial load time.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
