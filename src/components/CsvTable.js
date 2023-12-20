@@ -19,6 +19,7 @@ import employees from "../employees.csv";
 import suppliers from "../suppliers.csv";
 import territories from "../territories.csv";
 import northwind from "../northwind.csv";
+import products from "../products.csv";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -51,7 +52,7 @@ const CsvTable = (props) => {
   const [rows, setRows] = useState([]);
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("");
-  const possibilities = [territories, northwind];
+  const possibilities = [territories, products];
 
   useEffect(() => {
     const fetchData = async () => {
