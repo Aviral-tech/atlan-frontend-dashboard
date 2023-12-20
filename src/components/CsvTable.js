@@ -18,7 +18,7 @@ import customers from "../customers.csv";
 import employees from "../employees.csv";
 import suppliers from "../suppliers.csv";
 import territories from "../territories.csv";
-import northwind from "../northwind.csv";
+
 import products from "../products.csv";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
